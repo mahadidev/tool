@@ -83,7 +83,7 @@ const LanSelector = () => {
                   <path
                     fill="#192f5d"
                     d="M0 0h98.8v70H0z"
-                    transform="scale(3.9385)"
+                    transform="scale(3.9485)"
                   />
                   <path
                     fill="#fff"
