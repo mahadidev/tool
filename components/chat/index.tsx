@@ -12,7 +12,7 @@ const ConversationItem = ({
 }) => {
   return (
     <div
-      className={`py-4 flex gap-2 items-start ${
+      className={`py-1 flex gap-2 items-start ${
         role === "ai" ? "justify-start" : "justify-end"
       }`}
     >
@@ -38,36 +38,46 @@ const ConversationItem = ({
   );
 };
 
-const Chat = () => {
+const Chat = ({ className }: { className?: string }) => {
   const [messages, setMessages] = useState<
     {
       text: string;
       role: "ai" | "user";
     }[]
-  >();
-
-  useEffect(() => {
-    // set default message
-    setMessages([
-      {
-        text: "Let's get started...",
-        role: "ai",
-      },
-      {
-        text: "How can you help me?",
-        role: "user",
-      },
-    ]);
-  }, []);
+  >([
+    {
+      text: "Let's get started...",
+      role: "ai",
+    },
+    {
+      text: "How can you help me?",
+      role: "user",
+    },
+  ]);
 
   // message input ref
-  const messageInputRef = useRef(null);
+  const messageInputRef = useRef<any>(null);
+  const conversationAreaRef = useRef<any>(null);
+
+  const getReply = async (message: string) => {
+    const replyText = "Hey, I am coming soon! I am just developing.";
+    setMessages((prevMessage) => [
+      ...prevMessage,
+      {
+        text: replyText,
+        role: "ai",
+      },
+    ]);
+    // clear input
+    messageInputRef.current.value = "";
+  };
 
   const sendMessage = () => {
     // if has message
     if (messageInputRef?.current && messageInputRef.current?.value) {
       const message = messageInputRef.current.value;
       // push new message to state
+
       setMessages((prevMessage) => [
         ...prevMessage,
         {
@@ -77,17 +87,22 @@ const Chat = () => {
       ]);
       // clear input
       messageInputRef.current.value = "";
+
+      // get replay
+      getReply(message);
     }
   };
 
-  const onPressEnterKey = (e) => {
+  const onPressEnterKey = (e: any) => {
     if (e.key === "Enter") {
       sendMessage();
     }
   };
 
   return (
-    <div className="rounded-lg overflow-hidden shadow-box bg-white relative">
+    <div
+      className={`${className} rounded-lg overflow-hidden shadow-box bg-white relative`}
+    >
       <div className="py-2 px-4 border-b border-primary">
         <h1 className="text-2xl font-bold">
           M-<span className="text-secondary">AI</span> Chat
@@ -95,7 +110,7 @@ const Chat = () => {
       </div>
       <div className="py-4">
         <div className="min-h-[390px] max-h-[390px] overflow-y-auto px-4">
-          <div className="w-full h-[500px]">
+          <div id="chatBody" className="w-full" ref={conversationAreaRef}>
             {messages?.map(
               (
                 item: {

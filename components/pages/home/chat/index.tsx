@@ -10,7 +10,7 @@ const HomeChat = () => {
       <Section className="relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-40 items-center">
           <div>
-            <Chat />
+            <Chat className="w-full max-w-[600px]" />
           </div>
           <div>
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-800">
