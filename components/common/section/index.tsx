@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { Background } from "../index";
 
 const Section = ({
   children,
@@ -10,7 +12,7 @@ const Section = ({
   container?: boolean;
 }) => {
   return (
-    <section className={`w-full py-16 ${className}`}>
+    <section className={`w-full py-12 sm:py-22 lg:py-28 ${className}`}>
       {container && <div className="container">{children}</div>}
       {!container && children}
     </section>

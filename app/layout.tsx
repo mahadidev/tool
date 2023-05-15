@@ -17,7 +17,7 @@ export default function RootLayout({
         <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
       </head>
       <body className={`${inter.className} min-h-screen`}>
-        <header>
+        <header className="bg-white">
           <Navigation />
         </header>
         {children}

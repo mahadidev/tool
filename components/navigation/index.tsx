@@ -5,7 +5,11 @@ import LanSelector from "./LanSelector";
 
 const Navigation = () => {
   return (
-    <Navbar fluid={false} rounded={true}>
+    <Navbar
+      fluid={false}
+      rounded={true}
+      className="relative z-30 !bg-transparent"
+    >
       <Navbar.Brand href="https://flowbite.com/">
         <img
           src="/assets/images/logo.png"
