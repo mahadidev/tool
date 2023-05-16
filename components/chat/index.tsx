@@ -58,6 +58,7 @@ const Chat = ({ className }: { className?: string }) => {
   // message input ref
   const messageInputRef = useRef<any>(null);
   const conversationAreaRef = useRef<any>(null);
+  const chatBodyRef = useRef<any>(null);
 
   const getReply = async (message: string) => {
     const replyText = "Hey, I am coming soon! I am just developing.";
@@ -93,8 +94,13 @@ const Chat = ({ className }: { className?: string }) => {
 
       // scroll to bottom
       setTimeout(() => {
-        document.getElementById("chatBody").scrollTop =
-          conversationAreaRef.current.scrollHeight;
+        // if (
+        //   document.getElementById("chatBody") &&
+        //   document.getElementById("chatBody")?.scrollTop
+        // ) {
+        //   document.getElementById("chatBody")?.scrollTop =
+        //     conversationAreaRef.current.scrollHeight;
+        // }
       }, 200);
     }
   };
@@ -118,6 +124,7 @@ const Chat = ({ className }: { className?: string }) => {
         <div
           className="min-h-[390px] max-h-[390px] overflow-y-auto px-4"
           id="chatBody"
+          ref={chatBodyRef}
         >
           <div className="w-full" ref={conversationAreaRef}>
             {messages?.map(
