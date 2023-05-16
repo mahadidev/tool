@@ -1,10 +1,15 @@
 import { useStateContext } from "@/context";
+import { LanType } from "@/types";
 import { Dropdown, Avatar } from "flowbite-react";
-import React from "react";
+import React, { useState } from "react";
 
 const LanSelector = () => {
   const { selectedLan, selectLan } = useStateContext();
-  const lanList = {
+  const [lanList] = useState<{
+    en: LanType;
+    fr: LanType;
+    bn: LanType;
+  }>({
     en: {
       tag: "en",
       label: "English",
@@ -80,8 +85,7 @@ const LanSelector = () => {
         </svg>
       ),
     },
-  };
-  const lanKeys = Object.keys(lanList);
+  });
 
   return (
     <>
@@ -101,19 +105,39 @@ const LanSelector = () => {
           console.log(e);
         }}
       >
-        {lanKeys?.map((item: string, index: number) => (
-          <Dropdown.Item key={index} onClick={() => selectLan(lanList[item])}>
-            <div
-              className="block px-4 py-0 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
-              role="menuitem"
-            >
-              <div className="inline-flex items-center">
-                {lanList[item].icon}
-                {lanList[item].label}
-              </div>
+        <Dropdown.Item onClick={() => selectLan(lanList.en)}>
+          <div
+            className="block px-4 py-0 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+            role="menuitem"
+          >
+            <div className="inline-flex items-center">
+              {lanList.en.icon}
+              {lanList.en.label}
             </div>
-          </Dropdown.Item>
-        ))}
+          </div>
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => selectLan(lanList.fr)}>
+          <div
+            className="block px-4 py-0 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+            role="menuitem"
+          >
+            <div className="inline-flex items-center">
+              {lanList.fr.icon}
+              {lanList.fr.label}
+            </div>
+          </div>
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => selectLan(lanList.bn)}>
+          <div
+            className="block px-4 py-0 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+            role="menuitem"
+          >
+            <div className="inline-flex items-center">
+              {lanList.bn.icon}
+              {lanList.bn.label}
+            </div>
+          </div>
+        </Dropdown.Item>
       </Dropdown>
     </>
   );
