@@ -1,4 +1,10 @@
-import { HomeHero, HomeChat } from "@/components";
+import {
+  HomeHero,
+  HomeChat,
+  HomePDF,
+  HomeDalle,
+  HomeScrape,
+} from "@/components";
 import { Background } from "@/components/common";
 import Image from "next/image";
 
@@ -8,6 +14,9 @@ export default function Home() {
       <Background />
       <HomeHero />
       <HomeChat />
+      <HomePDF />
+      <HomeScrape />
+      <HomeDalle />
     </main>
   );
 }

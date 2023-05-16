@@ -5,3 +5,6 @@ export { default as Chat } from "./chat";
 export { default as HomeHero } from "./pages/home/hero";
 export { default as HomeIntro } from "./pages/home/intro";
 export { default as HomeChat } from "./pages/home/chat";
+export { default as HomePDF } from "./pages/home/pdf";
+export { default as HomeDalle } from "./pages/home/dalle";
+export { default as HomeScrape } from "./pages/home/scrape";

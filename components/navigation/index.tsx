@@ -2,8 +2,13 @@
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import React from "react";
 import LanSelector from "./LanSelector";
+import { useStateContext } from "@/context";
+import { menu } from "@/string";
 
 const Navigation = () => {
+  // context
+  const { selectedLan } = useStateContext();
+
   return (
     <Navbar
       fluid={false}
@@ -26,11 +31,15 @@ const Navigation = () => {
       </div>
       <Navbar.Collapse>
         <Navbar.Link href="/navbars" active={true}>
-          Home
+          {menu.home[selectedLan.tag]}
         </Navbar.Link>
-        <Navbar.Link href="/navbars">About</Navbar.Link>
-        <Navbar.Link href="/navbars">Services</Navbar.Link>
-        <Navbar.Link href="/navbars">Pricing</Navbar.Link>
+        <Navbar.Link href="/about">{menu.about[selectedLan.tag]}</Navbar.Link>
+        <Navbar.Link href="/services">
+          {menu.services[selectedLan.tag]}
+        </Navbar.Link>
+        <Navbar.Link href="/pricing">
+          {menu.pricing[selectedLan.tag]}
+        </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );

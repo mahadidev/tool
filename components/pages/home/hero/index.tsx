@@ -6,8 +6,12 @@ import Lottie from "react-lottie";
 import * as roboAnimation from "./robo.json";
 import * as appAnimation from "./app.json";
 import { HiUserCircle, HiCloudDownload, HiAdjustments } from "react-icons/hi";
+import { homeHero } from "@/string";
+import { useStateContext } from "@/context";
 
 const HomeHero = () => {
+  // context
+  const { selectedLan } = useStateContext();
   return (
     <>
       <Section
@@ -33,11 +37,10 @@ const HomeHero = () => {
                     style={{
                       margin: "0 !important",
                     }}
+                    isClickToPauseDisabled={true}
                   />
-                  <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800">
-                    Let's <span className="text-secondary">boost</span> your
-                    <br />
-                    business with <span className="text-primary">AI</span> Tool
+                  <h1 className="w-full max-w-[650px] text-2xl sm:text-3xl font-bold text-gray-800 !leading-tight">
+                    {homeHero[selectedLan.tag]}
                   </h1>
                   <Avatar.Group className="mt-6 pb-14">
                     <Avatar
@@ -83,6 +86,7 @@ const HomeHero = () => {
                       margin: "0 0 0 auto",
                       maxWidth: "100%",
                     }}
+                    isClickToPauseDisabled={true}
                   />
                 </div>
               </div>
@@ -90,11 +94,11 @@ const HomeHero = () => {
           </div>
         </div>
       </Section>
-      <div className="w-full py-4 bg-primary">
+      <div className="w-full py-4 bg-white border-y">
         <div className="container">
           <div className="grid grid-cols-3 items-center">
             <div className="col-span-2">
-              <h1 className="text-2xl text-white">
+              <h1 className="text-2xl text-gray-700">
                 Get 50% discount by starting right now.
               </h1>
             </div>

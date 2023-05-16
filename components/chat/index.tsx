@@ -90,6 +90,12 @@ const Chat = ({ className }: { className?: string }) => {
 
       // get replay
       getReply(message);
+
+      // scroll to bottom
+      setTimeout(() => {
+        document.getElementById("chatBody").scrollTop =
+          conversationAreaRef.current.scrollHeight;
+      }, 200);
     }
   };
 
@@ -109,8 +115,11 @@ const Chat = ({ className }: { className?: string }) => {
         </h1>
       </div>
       <div className="py-4">
-        <div className="min-h-[390px] max-h-[390px] overflow-y-auto px-4">
-          <div id="chatBody" className="w-full" ref={conversationAreaRef}>
+        <div
+          className="min-h-[390px] max-h-[390px] overflow-y-auto px-4"
+          id="chatBody"
+        >
+          <div className="w-full" ref={conversationAreaRef}>
             {messages?.map(
               (
                 item: {
